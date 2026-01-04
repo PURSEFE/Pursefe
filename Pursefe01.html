@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PURSEFE – La fe que llevas contigo</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f3ee;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Header: gradiente y espacio para logo + imagen decorativa */
+header {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #5DADE2, #85C1E9);
+  color: white;
+  padding: 40px 20px;
+}
+
+/* Capa opcional para mejorar contraste si pones una imagen de fondo */
+.header-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(93,173,226,0.55) 0%, rgba(133,193,233,0.35) 60%, rgba(133,193,233,0.25) 100%);
+  z-index: 1;
+}
+
+/* Contenedor interno para logo y texto */
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  z-index: 2; /* por encima del overlay */
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.logo {
+  display: inline-block;
+  width: 84px;
+  height: 84px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Texto del header: aquí colocamos la imagen encima del párrafo solicitado */
+.header-text {
+  flex: 1 1 420px;
+  min-width: 220px;
+}
+.header-text h1 {
+  font-size: 2.4rem;
+  margin: 0 0 6px 0;
+  line-height: 1.05;
+}
+.header-text p {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+/* Imagen que estará SOBRE el texto "No es solo una pulsera..." */
+.header-top-image {
+  width: 100%;
+  max-width: 420px;
+  margin: 14px 0;
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+  border: 3px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+}
+.header-top-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mantener la apariencia de los textos grandes del header */
+header h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+}
+header p.lead {
+  font-size: 1.1em;
+}
+
+/* Resto del estilo existente */
+section {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: #2C3E50;
+  margin-bottom: 15px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.pillars span {
+  display: inline-block;
+  background: #EAF2F8;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.steps li {
+  margin-bottom: 10px;
+}
+
+details {
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.05em;
+}
+
+.day p {
+  margin: 6px 0;
+}
+.spotify-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 22px;
+  background-color: #1DB954;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotify-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+footer {
+  background: #2C3E50;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* Responsive: apilar en pantallas pequeñas */
+@media (max-width: 720px) {
+  .header-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    align-items: center;
+  }
+  .header-text {
+    text-align: center;
+  }
+  .logo {
+    width: 72px;
+    height: 72px;
+  }
+  .header-top-image {
+    max-width: 84%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header aria-label="Encabezado principal de PURSEFE">
+  <div class="header-overlay" aria-hidden="true"></div>
+
+  <div class="header-inner">
+    <!-- Logo: reemplaza '/ruta/a/logo.png' por la ruta real de tu logo -->
+    <a href="/" class="logo" aria-label="Ir a la página principal">
+      <img src="/storage/emulated/0/Pictures/Screenshots/Screenshot_20260103-232531_2.png" alt="Logo PURSEFE" loading="lazy">
+    </a>
+
+    
+      <!-- IMAGEN AQUI: está colocada ENCIMA del párrafo "No es solo una pulsera..." -->
+      <div class="header-top-image" role="img" aria-label="Imagen representativa de PURSEFE">
+        <!-- Reemplaza '/ruta/a/header-image.jpg' por la imagen que quieras mostrar -->
+       <img src="/storage/emulated/0/Pictures/Screenshots/Screenshot_20260103-234647_2.png"alt="Pulsera PURSEFE sobre fondo inspirador" loading="lazy">
+      </div>
+
+      <!-- Texto que quedó debajo de la imagen -->
+      <p>No es solo una pulsera.<br>Es un recordatorio diario de que Dios camina contigo.</p>
+      <p><em>Si llegaste aquí, no es casualidad.</em></p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2>✝️ ¿Qué es PURSEFE?</h2>
+  <div class="card">
+    PURSEFE nace para jóvenes que desean creer y sentir a Dios cerca en medio de la vida real.
+    La palabra grabada en tu pulsera es <strong>ORA</strong>: una invitación constante a hablar con Dios.
+  </div>
+</section>
+
+<section>
+  <h2>🙏 Espiritualidad PURSEFE</h2>
+  <div class="pillars">
+    <span>🕊 Oración diaria</span>
+    <span>📖 Palabra de Dios</span>
+    <span>❤️ Vida interior auténtica</span>
+  </div>
+  <p>Aquí no buscamos perfección, buscamos corazones sinceros.</p>
+</section>
+
+<section>
+  <h2>🧭 ¿Cómo usar PURSEFE?</h2>
+  <ul class="steps">
+    <li>Detente un momento</li>
+    <li>Respira profundo</li>
+    <li>Recuerda que Dios está contigo</li>
+    <li>Ora, aunque sea en silencio</li>
+  </ul>
+</section>
+
+<section>
+  <h2>📅 Reto espiritual – 30 días con Dios</h2>
+
+  <details>
+    <summary>Día 1 – Dios me ve</summary>
+    <div class="day">
+      <p>📖 “Antes de formarte en el vientre, te conocía.” (Jer 1,5)</p>
+      <p>🙏 Señor, aquí estoy. Tú me conoces.</p>
+      <p>🎯 Háblale a Dios 1 minuto en silencio.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 2 – Confío</summary>
+    <div class="day">
+      <p>📖 “Confía en el Señor con todo tu corazón.” (Prov 3,5)</p>
+      <p>🙏 Ayúdame a confiar incluso cuando no entiendo.</p>
+      <p>🎯 Entrégale a Dios una preocupación.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 3 – Gratitud</summary>
+    <div class="day">
+      <p>📖 “Dad gracias en todo, porque esta es la voluntad de Dios.” (1 Tes 5,18)</p>
+      <p>🙏 Gracias por lo que tengo y por lo que vendrá.</p>
+      <p>🎯 Anota 3 cosas por las que estás agradecido hoy.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 4 – Perdón</summary>
+    <div class="day">
+      <p>📖 “Perdonaos mutuamente como el Señor os perdonó.” (Col 3,13)</p>
+      <p>🙏 Señor, dame un corazón dispuesto a perdonar.</p>
+      <p>🎯 Pide perdón o perdona a alguien en tu corazón.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 5 – Servicio</summary>
+    <div class="day">
+      <p>📖 “Lo que hicisteis al más pequeño de estos, a mí lo hicisteis.” (Mt 25,40)</p>
+      <p>🙏 Enséñame a servir con alegría.</p>
+      <p>🎯 Haz una buena obra anónima hoy.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 6 – Silencio y escucha</summary>
+    <div class="day">
+      <p>📖 “Estad quietos, y conoced que yo soy Dios.” (Sal 46,10)</p>
+      <p>🙏 Señor, ayúdame a escuchar tu voz.</p>
+      <p>🎯 Guarda 2 minutos de silencio y escucha.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 7 – Confesión</summary>
+    <div class="day">
+      <p>📖 “Si confesamos nuestros pecados, él es fiel y justo para perdonarnos.” (1 Jn 1,9)</p>
+      <p>🙏 Señor, confieso lo que me pesa.</p>
+      <p>🎯 Confiesa sinceramente ante Dios una cosa hoy.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 8 – Alegría</summary>
+    <div class="day">
+      <p>📖 “Regocijaos en el Señor siempre.” (Filipenses 4,4)</p>
+      <p>🙏 Gracias por la alegría que das.</p>
+      <p>🎯 Escucha o canta una canción que te eleve el alma.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 9 – Esperanza</summary>
+    <div class="day">
+      <p>📖 “El Dios de la esperanza os llene de gozo y paz.” (Rom 15,13)</p>
+      <p>🙏 Llena mi corazón de esperanza hoy.</p>
+      <p>🎯 Escribe una esperanza concreta y colócala a la vista.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 10 – Compasión</summary>
+    <div class="day">
+      <p>📖 “Sé compasivo como tu Padre es compasivo.” (Lc 6,36)</p>
+      <p>🙏 Abre mis ojos para ver a los necesitados.</p>
+      <p>🎯 Contacta a alguien que pueda necesitar apoyo y ofrécete a escuchar.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 11 – Sabiduría</summary>
+    <div class="day">
+      <p>📖 “Pide sabiduría a Dios, y te la dará.” (Sant 1,5)</p>
+      <p>🙏 Dame claridad para las decisiones de hoy.</p>
+      <p>🎯 Pide a Dios sabiduría por algo concreto.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 12 – Paciencia</summary>
+    <div class="day">
+      <p>📖 “El fruto del Espíritu es paciencia.” (Gal 5,22)</p>
+      <p>🙏 Enséñame a esperar con paz.</p>
+      <p>🎯 Practica paciencia en una situación que normalmente te frustra.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 13 – Humildad</summary>
+    <div class="day">
+      <p>📖 “Haced todo con humildad.” (Filipenses 2,3)</p>
+      <p>🙏 Ayúdame a poner a los demás antes que mi orgullo.</p>
+      <p>🎯 Haz un gesto sencillo de servicio sin buscar reconocimiento.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 14 – Fortaleza</summary>
+    <div class="day">
+      <p>📖 “No temas, porque yo estoy contigo.” (Is 41,10)</p>
+      <p>🙏 Dame fuerza en lo que enfrento hoy.</p>
+      <p>🎯 Repite en voz alta: “Dios está conmigo”.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 15 – Contemplación de la creación</summary>
+    <div class="day">
+      <p>📖 “Los cielos cuentan la gloria de Dios.” (Sal 19,1)</p>
+      <p>🙏 Gracias por tu obra en la naturaleza.</p>
+      <p>🎯 Sal un momento y contempla la creación: cielo, árbol o río.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 16 – Renovación interior</summary>
+    <div class="day">
+      <p>📖 “Renovados de día en día.” (2 Cor 4,16)</p>
+      <p>🙏 Renueva mi corazón y mis fuerzas.</p>
+      <p>🎯 Identifica y deja atrás una carga vieja hoy.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 17 – Amor</summary>
+    <div class="day">
+      <p>📖 “El amor es paciente, es bondadoso.” (1 Cor 13,4)</p>
+      <p>🙏 Enséñame a amar como tú amas.</p>
+      <p>🎯 Haz un gesto de amor concreto para alguien cercano.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 18 – Servicio discreto</summary>
+    <div class="day">
+      <p>📖 “Que no sepa tu mano izquierda lo que hace tu derecha.” (Mt 6,3)</p>
+      <p>🙏 Ayúdame a servir sin buscar aplausos.</p>
+      <p>🎯 Haz una ayuda discreta y no la comentes.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 19 – Oración por otros</summary>
+    <div class="day">
+      <p>📖 “Haced peticiones por todos los hombres.” (1 Tim 2,1)</p>
+      <p>🙏 Intercedo por quienes sufren.</p>
+      <p>🎯 Ora por tres personas y anota sus nombres.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 20 – Familia</summary>
+    <div class="day">
+      <p>📖 “La familia es un don de Dios.” (Sal 127,3)</p>
+      <p>🙏 Bendice a mi familia y fortalece nuestros lazos.</p>
+      <p>🎯 Envía un mensaje de cariño a un familiar.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 21 – Cuidado de la providencia</summary>
+    <div class="day">
+      <p>📖 “Mirad las aves del cielo... vuestro Padre las alimenta.” (Mt 6,26)</p>
+      <p>🙏 Confío en tu cuidado diario, Señor.</p>
+      <p>🎯 Suelta una preocupación y confíala a Dios por escrito.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 22 – Discernimiento</summary>
+    <div class="day">
+      <p>📖 “Reconócelo en todos tus caminos.” (Prov 3,6)</p>
+      <p>🙏 Dame discernimiento para elegir bien.</p>
+      <p>🎯 Pide a Dios claridad sobre una decisión hoy.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 23 – Comunidad</summary>
+    <div class="day">
+      <p>📖 “Donde dos o tres se reúnen en mi nombre, allí estoy yo.” (Mt 18,20)</p>
+      <p>🙏 Gracias por la iglesia y los amigos en la fe.</p>
+      <p>🎯 Participa o contacta a tu grupo o comunidad hoy.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 24 – Perdonarme a mí mismo</summary>
+    <div class="day">
+      <p>📖 “Tan lejos de nosotros echó nuestras transgresiones.” (Sal 103,12)</p>
+      <p>🙏 Señor, ayúdame a perdonarme como tú me perdonas.</p>
+      <p>🎯 Escribe una afirmación de perdón y guárdala.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 25 – Entrega y sacrificio</summary>
+    <div class="day">
+      <p>📖 “Presentad vuestros cuerpos como sacrificio vivo.” (Rom 12,1)</p>
+      <p>🙏 Que mi vida sea ofrenda para tu obra.</p>
+      <p>🎯 Renuncia hoy a algo pequeño por amor a otro.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 26 – Gratitud por la salvación</summary>
+    <div class="day">
+      <p>📖 “Porque de tal manera amó Dios al mundo.” (Jn 3,16)</p>
+      <p>🙏 Gracias por tu amor que salva.</p>
+      <p>🎯 Agradece en silencio por el don de la fe durante 1 minuto.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 27 – Espera activa</summary>
+    <div class="day">
+      <p>📖 “Espera en el Señor; sé fuerte.” (Sal 27,14)</p>
+      <p>🙏 Dame paciencia para esperar tus tiempos.</p>
+      <p>🎯 Practica la espera con una oración breve cada hora del día.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 28 – Rendición</summary>
+    <div class="day">
+      <p>📖 “Venid a mí todos los que estáis trabajados y cargados.” (Mt 11,28)</p>
+      <p>🙏 Tomo tu descanso y te entrego mis cargas.</p>
+      <p>🎯 Escribe lo que quieres entregar a Dios y quémalo simbólicamente (seguro).</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 29 – Testimonio</summary>
+    <div class="day">
+      <p>📖 “Que vuestra luz brille delante de los hombres.” (Mt 5,16)</p>
+      <p>🙏 Dame valor para compartir lo que Dios hizo en mí.</p>
+      <p>🎯 Comparte una breve experiencia de fe con alguien cercano.</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>Día 30 – Consagración</summary>
+    <div class="day">
+      <p>📖 “No os conforméis a este mundo, transformaos.” (Rom 12,2)</p>
+      <p>🙏 Me consagro a vivir conforme a tu voluntad.</p>
+      <p>🎯 Haz un compromiso concreto: una práctica espiritual que mantendrás las próximas semanas.</p>
+    </div>
+  </details>
+
+</section>
+
+<section>
+  <h2>🎵 Música que eleva el alma</h2>
+  <div class="card">
+    🎧 Música católica juvenil para orar, pensar y descansar el corazón.<br>
+    <a href="https://open.spotify.com/playlist/6WCTCmGad1kiLFEP1iBuFH?si=_uYzT3YmQEa3dClj70cDFw&pt=c25e47e71d91b9ed9abdaaee840ee621"
+   target="_blank"
+   class="spotify-btn">
+   🎧 Escuchar playlist en Spotify
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Si llegaste hasta aquí, no es casualidad.</p>
+  <p>Dios camina contigo incluso cuando no lo sientes.</p>
+  <p><strong>PURSEFE 💙 – Lleva tu fe contigo</strong></p>
+</footer>
+<section>
+  <h2>📩 Contacto</h2>
+  <div class="card">
+    <p>
+      ¿Tienes preguntas, quieres compartir tu testimonio o deseas más información sobre PURSEFE?
+    </p>
+
+    <p><strong>Escríbenos:</strong></p>
+
+    <p>
+      📧 Correo: 
+      <a href="mailto:pursefe@gmail.com">pursefe@gmail.com</a>
+    </p>
+
+    <p>
+      📱 WhatsApp: 
+      <a href="https://wa.me/8293755161" target="_blank">
+        Escríbenos aquí
+      </a>
+    </p>
+
+    <p>
+      📸 Instagram: 
+      <a href="https://instagram.com/pursefe" target="_blank">
+        @pursefe
+      </a>
+    </p>
+
+    <p style="margin-top:15px;">
+      <em>Estamos para acompañarte. No caminas solo.</em>
+    </p>
+  </div>
+</section>
+</body>
+</html>
